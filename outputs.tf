@@ -25,5 +25,5 @@ output "invoke_arn" {
 
 output "version" {
   value       = aws_lambda_function.lambda.version
-  description = "The name of the function created"
+  description = "The version of the function created"
 }
