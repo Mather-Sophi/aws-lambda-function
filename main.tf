@@ -55,7 +55,7 @@ data "aws_iam_policy_document" "lambda_role" {
 
     principals {
       type        = "Service"
-      identifiers = ["lambda.amazonaws.com"]
+      identifiers = ["lambda.amazonaws.com","edgelambda.amazonaws.com"]
     }
   }
 }
