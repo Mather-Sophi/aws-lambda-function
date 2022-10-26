@@ -46,7 +46,11 @@ resource "aws_lambda_function" "lambda" {
   role          = aws_iam_role.lambda.arn
   handler       = var.handler
   publish       = var.publish
-  layers        = concat([lookup(local.aws_parameters_and_secrets_lambda_extension_arn, local.aws_region)], var.layers)
+  layers        = (
+    var.use_parameters_and_secrets_layer ?
+    concat([lookup(local.aws_parameters_and_secrets_lambda_extension_arn, local.aws_region)], var.layers) :
+    var.layers
+  )
   // Use empty_function.zip if no other file is specified
   filename = length(var.filename) > 0 ? var.filename : "${path.module}/files/empty_function.zip"
 
