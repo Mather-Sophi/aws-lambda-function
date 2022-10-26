@@ -1,8 +1,11 @@
+## v1.8 Notes
+AWS annouced the [AWS parameters and secrets lambda extension](https://aws.amazon.com/about-aws/whats-new/2022/10/aws-parameters-secrets-lambda-extension/) on Oct 18, 2022. The extension is offered as a lambda layer and can be enabled by setting the `use_parameters_and_secrets_layer` variable to `true`.
+
 ## Usage
 
 ```hcl
 module "function" {
-  source = "github.com/globeandmail/aws-lambda-function?ref=1.7"
+  source = "github.com/globeandmail/aws-lambda-function?ref=1.8"
 
   function_name      = "my-lambda-function"
   tags               = var.tags
@@ -39,6 +42,7 @@ module "function" {
 | dead\_letter\_config | A child block with a single argument `target_arn`  | block | `""` | no |
 | sns\_target\_arn | SNS arn to be set when to send notification for lambda failure | string | `""` | no |
 | sqs\_target\_arn | SQS arn to be set when to send notification for lambda failure | string | `""` | no |
+| use\_param\_store\_secrets\_layer | Required to be set to `true` if using the AWS parameters and secrets lambda extension | bool | `false` | no |
 
 ## Outputs
 

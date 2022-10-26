@@ -112,3 +112,9 @@ variable "dead_letter_config" {
   })
   default = null
 }
+
+variable "use_parameters_and_secrets_layer" {
+  type        = bool
+  default     = false
+  description = "Required to be set to true if using the AWS parameters and secrets lambda extension"
+}
