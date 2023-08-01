@@ -22,8 +22,15 @@ variable "alias" {
 }
 
 variable "filename" {
+  type = string
   default     = ""
   description = "The zip file to upload containing the function code"
+}
+
+variable "image_uri" {
+  type = string
+  default = ""
+  description = "The ECR image URI containing the function's deployment package"
 }
 
 variable "handler" {
@@ -86,6 +93,12 @@ variable "layers" {
   type        = list
   default     = []
   description = "List of Lambda Layer Version ARNs (maximum of 5) to attach to this Lambda Function"
+}
+
+variable "package_type" {
+  type = string
+  default = "Zip"
+  description = "Lambda deployment package type"
 }
 
 variable "tags" {
