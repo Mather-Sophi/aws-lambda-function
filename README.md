@@ -1,5 +1,5 @@
 ## v1.9 Notes
-The TF module now supports `Zip` and `Image` deployment package types. Wnen you use the `Image` package type, you must not specify any value for the `handler`, `runtime` and `layers` input variables.
+The TF module now supports `Zip` and `Image` deployment package types. When you use the `Image` package type, you must not specify any value for the `handler`, `runtime` and `layers` input variables.
 
 ## v1.8 Notes
 AWS annouced the [AWS parameters and secrets lambda extension](https://aws.amazon.com/about-aws/whats-new/2022/10/aws-parameters-secrets-lambda-extension/) on Oct 18, 2022. The extension is offered as a lambda layer and can be enabled by setting the `use_parameters_and_secrets_layer` variable to `true`.
