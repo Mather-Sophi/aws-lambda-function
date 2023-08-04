@@ -40,16 +40,18 @@ locals {
 resource "aws_lambda_function" "lambda" {
   function_name = var.function_name
   description   = var.description != "Created by Terraform" ? var.description : "${var.description} at ${local.datetime}"
-  runtime       = var.runtime
+  runtime       = var.package_type == "Zip" ? var.runtime : null
   memory_size   = var.memory_size
   timeout       = var.timeout
   role          = aws_iam_role.lambda.arn
-  handler       = var.handler
+  handler       = var.package_type == "Zip" ? var.handler : null
   publish       = var.publish
   layers        = (
+    var.package_type == "Zip" ?
     var.use_parameters_and_secrets_layer ?
     concat([lookup(local.aws_parameters_and_secrets_lambda_extension_arn, local.aws_region)], var.layers) :
-    var.layers
+    var.layers :
+    null
   )
   package_type = var.package_type
   // Use empty_function.zip if no other file is specified
