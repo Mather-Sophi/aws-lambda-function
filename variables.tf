@@ -22,19 +22,26 @@ variable "alias" {
 }
 
 variable "filename" {
+  type = string
   default     = ""
   description = "The zip file to upload containing the function code"
 }
 
+variable "image_uri" {
+  type = string
+  default = ""
+  description = "The ECR image URI containing the function's deployment package. Only specify when var.package_type is Image"
+}
+
 variable "handler" {
   default     = "lambda_function.lambda_handler"
-  description = "The function entrypoint"
+  description = "The function entrypoint. Only specify when var.package_type is Zip"
 }
 
 variable "runtime" {
   type        = string
   default     = "python3.7"
-  description = "Lambda execution environment language"
+  description = "Lambda execution environment language. Only specify when var.package_type is Zip"
 }
 
 variable "memory_size" {
@@ -85,7 +92,13 @@ variable "secret_arn" {
 variable "layers" {
   type        = list
   default     = []
-  description = "List of Lambda Layer Version ARNs (maximum of 5) to attach to this Lambda Function"
+  description = "List of Lambda Layer Version ARNs (maximum of 5) to attach to this Lambda Function. Only specify when var.package_type is Zip"
+}
+
+variable "package_type" {
+  type = string
+  default = "Zip"
+  description = "Lambda deployment package type"
 }
 
 variable "tags" {
@@ -116,5 +129,5 @@ variable "dead_letter_config" {
 variable "use_parameters_and_secrets_layer" {
   type        = bool
   default     = false
-  description = "Required to be set to true if using the AWS parameters and secrets lambda extension"
+  description = "Required to be set to true if using the AWS parameters and secrets lambda extension. Only specify when var.package_type is Zip"
 }
