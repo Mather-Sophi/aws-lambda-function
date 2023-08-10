@@ -58,6 +58,10 @@ resource "aws_lambda_function" "lambda" {
   filename = var.package_type == "Zip" ? length(var.filename) > 0 ? var.filename : "${path.module}/files/empty_function.zip" : null
   image_uri = var.package_type == "Image" ? var.image_uri : null
 
+  ephemeral_storage {
+    size = var.ephemeral_storage
+  }
+
   dynamic "environment" {
     for_each = local.env_vars
     content {

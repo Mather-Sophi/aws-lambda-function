@@ -29,6 +29,7 @@ module "function" {
 | <a name="input_dead_letter_config"></a> [dead\_letter\_config](#input\_dead\_letter\_config) | n/a | <pre>object({<br>    target_arn = string<br>  })</pre> | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | A description for this Lambda Function | `string` | `"Created by Terraform"` | no |
 | <a name="input_env_vars"></a> [env\_vars](#input\_env\_vars) | A map that defines environment variables for this Lambda function. | `map` | `null` | no |
+| <a name="input_ephemeral_storage"></a> [ephemeral\_storage](#input\_ephemeral\_storage) | Amount of Ephemeral storage(/tmp) in MB this Lambda Function can use at runtime. Defaults to 512 | `number` | `512` | no |
 | <a name="input_filename"></a> [filename](#input\_filename) | The zip file to upload containing the function code | `string` | `""` | no |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | A unique name for this Lambda Function | `string` | n/a | yes |
 | <a name="input_handler"></a> [handler](#input\_handler) | The function entrypoint. Only specify when var.package\_type is Zip | `string` | `"lambda_function.lambda_handler"` | no |

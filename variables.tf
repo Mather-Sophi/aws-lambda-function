@@ -49,6 +49,11 @@ variable "memory_size" {
   description = "Amount of memory in MB this Lambda Function can use at runtime. Defaults to 128"
 }
 
+variable "ephemeral_storage" {
+  default     = 512
+  description = "Amount of Ephemeral storage(/tmp) in MB this Lambda Function can use at runtime. Defaults to 512"
+}
+
 variable "timeout" {
   default     = 5
   description = "The amount of time this Lambda Function has to run in seconds"
