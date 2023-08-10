@@ -53,6 +53,9 @@ resource "aws_lambda_function" "lambda" {
     var.layers :
     null
   )
+  ephemeral_storage = {
+    size = var.ephemeral_storage
+  }
   package_type = var.package_type
   // Use empty_function.zip if no other file is specified
   filename = var.package_type == "Zip" ? length(var.filename) > 0 ? var.filename : "${path.module}/files/empty_function.zip" : null
